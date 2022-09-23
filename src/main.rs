@@ -1,3 +1,4 @@
+use text_io::read;
 use crate::parser::read_file;
 
 mod parser;
@@ -91,7 +92,9 @@ impl Vm {
 }
 
 fn main() {
-    let program = match read_file("amongus.txt") {
+    print!("Please enter a filename: ");
+    let filename: String = read!("{}\n");
+    let program = match read_file(&filename) {
         Ok(program) => program,
         Err(_) => panic!("Couldn't read input file!")
     };
